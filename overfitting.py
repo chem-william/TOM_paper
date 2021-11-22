@@ -13,7 +13,7 @@ c = [
 ]  # Blue, Red, Green, Purple, Yellow
 
 lines = sns.color_palette("Accent", 12)
-lines = [lines[0], lines[2], lines[4]]
+lines = [lines[2], lines[0], lines[4]]
 linestyles = ["solid"]*3
 
 sns.set(
@@ -27,6 +27,7 @@ sns.set(
     font_scale=2.5,
     palette=sns.color_palette("Set2")
 )
+set2 = sns.color_palette("Set2", 5)
 
 np.random.seed(2021)
 
@@ -50,6 +51,7 @@ max_order = 8
 px = 1/plt.rcParams['figure.dpi']
 fig, axes = plt.subplots(1, 2, figsize=(1848*px, 965*px))
 color_idx = 0
+color_count = 0
 for idx, order in enumerate(np.arange(1, max_order + 1)):
     p = np.polyfit(x, y, order)
     y_func = np.poly1d(p)
@@ -62,32 +64,49 @@ for idx, order in enumerate(np.arange(1, max_order + 1)):
             x_test_axis,
             y_func(x_test_axis),
             label=f"Polynomial order: {order}",
-            c=lines[color_idx],
+            c=set2[color_count],
+            # c=lines[color_idx],
             linestyle=linestyles[color_idx],
-            linewidth=9,
-            zorder=max_order - order,
+            linewidth=7,
+            # zorder=max_order - order,
         )
         color_idx += 1
+        color_count += 1
 
+    if idx == 0:
         axes[0].scatter(
             x,
             y,
             label="Training set",
-            marker="x",
-            c=c[1],
-            s=200,
+            marker="X",
+            linewidth=.5,
+            c=set2[color_count],
+            edgecolor="w",
+            s=196,
             zorder=100,
         )
+        # axes[0].scatter(
+        #     x,
+        #     y,
+        #     label="Training set",
+        #     marker="x",
+        #     c="white",
+        #     s=256,
+        #     zorder=99,
+        # )
+        color_count += 1
         axes[0].scatter(
             x_test,
             y_test,
             label="Test set",
-            c=c[0],
-            s=10,
-            alpha=0.4,
-            edgecolor="none",
-            zorder=50,
+            # c=c[0],
+            c=set2[color_count],
+            s=16,
+            # alpha=0.8,
+            edgecolor="w",
+            linewidth=.2,
         )
+        color_count += 1
 
 axes[0].set_xlabel("X")
 axes[0].set_ylabel("Y")
@@ -96,14 +115,14 @@ axbig = axes[1]
 
 x = np.arange(1, len(RMSEC) + 1)
 axbig.bar(
-    x - .13, RMSEP, width=0.25, label="Test", facecolor=c[0], edgecolor="none"
+    x - .13, RMSEP, width=0.25, label="Test", facecolor=set2[2], edgecolor="none"
 )
 axbig.bar(
     x + .13,
     RMSEC,
     width=0.25,
     label="Training",
-    facecolor=c[1],
+    facecolor=set2[1],
     edgecolor="none"
 )
 axbig.axhline(np.min(RMSEP), linestyle="--", c="grey", label="Lowest test")
