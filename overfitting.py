@@ -67,8 +67,9 @@ for idx, order in enumerate(np.arange(1, max_order + 1)):
             c=set2[color_count],
             # c=lines[color_idx],
             linestyle=linestyles[color_idx],
-            linewidth=7,
-            # zorder=max_order - order,
+            linewidth=30,
+            alpha=0.5,
+            zorder=max_order - order,
         )
         color_idx += 1
         color_count += 1
@@ -79,11 +80,11 @@ for idx, order in enumerate(np.arange(1, max_order + 1)):
             y,
             label="Training set",
             marker="X",
-            linewidth=.5,
+            linewidth=.7,
             c=set2[color_count],
             edgecolor="w",
-            s=196,
-            zorder=100,
+            s=240,
+            zorder=1001,
         )
         # axes[0].scatter(
         #     x,
@@ -101,10 +102,11 @@ for idx, order in enumerate(np.arange(1, max_order + 1)):
             label="Test set",
             # c=c[0],
             c=set2[color_count],
-            s=16,
+            s=20,
             # alpha=0.8,
             edgecolor="w",
-            linewidth=.2,
+            linewidth=.4,
+            zorder=1000,
         )
         color_count += 1
 
