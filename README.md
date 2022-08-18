@@ -1,5 +1,5 @@
 # TOM_paper
-Scripts for the paper "Trusting our Machines: Validating Machine Learning Models in Molecular Electronics". DOI: 10.1039/D1CS00884F
+Scripts for the paper "Trusting our Machines: Validating Machine Learning Models in Molecular Electronics". DOI: [10.1039/D1CS00884F](https://doi.org/10.1039/D1CS00884F)
 
 Please cite that paper if anything in this repo proves useful in your own work :-)
 
