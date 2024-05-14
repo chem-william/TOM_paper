@@ -4,4 +4,4 @@ numpy==1.19.5
 scikit-learn==1.0
 scipy==1.6.2
 seaborn==0.11.1
-tqdm==4.60.0
+tqdm==4.66.2
